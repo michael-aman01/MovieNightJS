@@ -5,9 +5,9 @@ import Searchbar from "../Searchbar";
 export default function HeaderBar(){
     return (
         <>
-            <div className={styles.header_container}>
+
                <Searchbar></Searchbar>
-            </div>
+     
         </>
     )
 }

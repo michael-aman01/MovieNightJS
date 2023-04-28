@@ -1,38 +1,44 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import {Card, Flex, Stack, Heading, CardBody, CardFooter, Button, Image, CardHeader, Text,Box,  VStack, StackDivider} from "@chakra-ui/react"
 
-
-export default function MoviesIndexItem(){
-    const [title, setTitle] = useState("Avengers Endgame")
-    const [data, setData] = useState()
-    const [searchResults, setSearchResults] = useState()
-
-    const getData = async () => {
-        try{
-            const params = new URLSearchParams({s: title, r: "json"})
-            const req = await fetch(`api/search/`, {
-                method: "POST", 
-                body: JSON.stringify({"title":title}),
-            })
-            console.log(req)
-            setSearchResults(req)
-        }catch(error){
-            console.log(error)
-        }
-    }
-
-
+export default function MoviesIndexItem({movieData}){
 
     return (
         <>
-            <div>
-               <button onClick={getData}>get moviesw</button>
-            </div>
-            {searchResults && (
-                <div>
-                    Data retrieved
-                </div>
-            )}
+        {movieData && (
+
+<Card
+  direction={{ base: 'column', sm: 'row' }}
+  overflow='hidden'
+  variant='outline'
+>
+  <Image
+    objectFit='cover'
+    maxW={{ base: '100%', sm: '200px' }}
+   src={movieData.Poster}
+
+  />
+
+  <Stack>
+    <CardBody>
+      <Heading size='lg'>{movieData.Title}</Heading>
+
+      <Text py='2'>
+        Caffè latte is a coffee beverage of Italian origin made with espresso
+        and steamed milk.
+      </Text>
+    </CardBody>
+
+    <CardFooter>
+      <Button variant='solid' colorScheme='blue'>
+            Add to Bookmarks
+      </Button>
+    </CardFooter>
+  </Stack>
+</Card>
+
+    )}
         </>
     )
     
