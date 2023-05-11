@@ -1,4 +1,9 @@
 .header_container{
-   
+
+    padding: 1%;
     border-bottom: 1px solid white;
+}
+
+.social_media_image {
+    cursor: pointer;
 }

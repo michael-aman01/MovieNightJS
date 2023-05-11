@@ -26,16 +26,7 @@ export default function App(){
         <>
     <Flex className={styles.app_container} minHeight="100vh" width="100vw" height="100vh" backgroundColor="#6a52ff4d" flexDirection="column">
     <HeaderBar></HeaderBar>
-        
-
-
-    
-
-    
-    
-    
-    
-    
+      
       <MoviesIndex></MoviesIndex>
     </Flex>
 
