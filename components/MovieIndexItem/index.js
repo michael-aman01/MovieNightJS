@@ -1,10 +1,10 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import {Card, Flex, Tag, Tab, TabList, Tabs, TabIndicator, TabPanels , TabPanel, Stack, Heading, AspectRatio, CardBody, CardFooter, Button, Image, CardHeader, Text,Box,  VStack, StackDivider, Container, Divider, Center} from "@chakra-ui/react"
-import { addBookmarkToStorage, loadBookmarks } from "../../pages/store/bookmarks";
+import { addBookmarkToStorage, loadBookmarks } from "../../store/bookmarks";
 import { useDisclosure } from '@chakra-ui/react'
 import { useSelector, useDispatch } from "react-redux";
-import { removeBookmark } from "../../pages/store/bookmarks";
+import { removeBookmark } from "../../store/bookmarks";
 import { AddIcon, MinusIcon } from "@chakra-ui/icons";
 
 
@@ -108,7 +108,8 @@ export default function MoviesIndexItem({movieData}){
 
 
             {currentBookmarks.filter(movie => movie.imdbID === movieData.imdbID).length === 0 ?   
-            <Button colorScheme="green"  leftIcon={<AddIcon />} id={movieData.imdbID} onClick={(e) => handleAddBookmark(e, movieData)}>Add to Bookmarks</Button> : <Button leftIcon={<MinusIcon/>} colorScheme="red" id={movieData.imdbID} onClick={handleBookmarkRemoval}>Remove from Bookmarks</Button>}
+            <Button colorScheme="green"  leftIcon={<AddIcon />} id={movieData.imdbID} onClick={(e) => handleAddBookmark(e, movieData)}>Add to Bookmarks</Button> : 
+            null }
 
          </Center>
                   </CardBody>

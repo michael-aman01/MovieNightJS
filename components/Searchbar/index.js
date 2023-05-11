@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Input, Stack, Spacer, Container, Box, Button, Flex, ButtonGroup, Heading } from "@chakra-ui/react";
 import style from "./searchbar.module.css"
 import MoviesIndex from "../MoviesIndex";
-import { addMovies } from "../../pages/store/movies";
+import { addMovies } from "../../store/movies";
 
 
 export default function Searchbar(){
@@ -34,7 +34,6 @@ export default function Searchbar(){
                 body: JSON.stringify({"title":title}),
             })
             const data = await req.json()
-            
             setSearchResults(data.filter(movie => movie.Type === "movie"))
         }catch(error){
             alert("sorry no search results found! Try another title")

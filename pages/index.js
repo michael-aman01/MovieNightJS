@@ -2,7 +2,7 @@ import React from "react";
 import App from "../components/App";
 import { ChakraProvider } from "@chakra-ui/react";
 import { Provider } from 'react-redux';
-import configureStore from './store/index';
+import configureStore from '../store/index';
 import { useDispatch } from 'react-redux';
 
 

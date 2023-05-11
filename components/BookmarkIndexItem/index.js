@@ -2,9 +2,10 @@ import React from "react";
 import {useState,useEffect} from "react"
 import {Card, Flex, Tag, Tab, TabList, Tabs, TabIndicator, TabPanels , TabPanel, Stack, Heading, AspectRatio, CardBody, CardFooter, Button, Image, CardHeader, Text,Box,  VStack, StackDivider, Container, Divider, Center} from "@chakra-ui/react"
 import { useDispatch } from "react-redux";
-import { removeBookmark } from "../../pages/store/bookmarks";
+import { removeBookmark } from "../../store/bookmarks";
 import { useSelector } from "react-redux";
 import { MinusIcon } from "@chakra-ui/icons";
+
 export default function BookmarksIndexItem({movieData}){
     const dispatch = useDispatch()
     const bookmarks = useSelector(state => state.bookmarks)
@@ -12,7 +13,7 @@ export default function BookmarksIndexItem({movieData}){
     const handleBookmarkRemoval = (e) => {
         e.preventDefault()
         dispatch(removeBookmark(e.target.id))
-        console.log(bookmarks)
+        
         
     }
     return (

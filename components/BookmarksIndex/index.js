@@ -5,7 +5,7 @@ import { useDisclosure, RadioGroup,DrawerCloseButton, Button, Tag, Stack, Radio,
 
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import bookmarksReducer, { loadBookmarks } from "../../pages/store/bookmarks";
+import bookmarksReducer, { loadBookmarks } from "../../store/bookmarks";
 import MoviesIndexItem from "../MovieIndexItem";
 import BookmarksIndexItem from "../BookmarkIndexItem";
 

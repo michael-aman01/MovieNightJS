@@ -8,7 +8,7 @@ import Searchbar from "../Searchbar";
 import MoviesIndex from "../MoviesIndex";
 import BookmarksIndex  from "../BookmarksIndex";
 import { useSelector } from "react-redux";
-import { loadBookmarks } from "../../pages/store/bookmarks";
+import { loadBookmarks } from "../../store/bookmarks";
 import styles from "./app.module.css"
 export default function App(){
   const [showBookmarks, setShowBookmarks] = useState(false)

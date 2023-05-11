@@ -48,7 +48,7 @@
       return data
     }));
 
-
+    console.log(movieDetails)
     return responseObject.status(200).json(movieDetails)
   }
   
