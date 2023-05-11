@@ -25,7 +25,7 @@
   "scripts": {
     "start": "next start",
     "dev": "next dev && react-dotenv",
-    "build": "next build",
+    "build": "npm install && next build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

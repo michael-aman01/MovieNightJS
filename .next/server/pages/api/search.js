@@ -52,6 +52,7 @@ async function requestIMDB(responseObject, moviesJSONData) {
         const data = await req.json();
         return data;
     }));
+    console.log(movieDetails);
     return responseObject.status(200).json(movieDetails);
 }
 
