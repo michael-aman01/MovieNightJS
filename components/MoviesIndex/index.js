@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { Input, Stack, Container, Box, SimpleGrid, VStack, StackDivider, Flex, Center, Text} from "@chakra-ui/react";
-import Searchbar from "../Searchbar";
+import {  SimpleGrid, Center, Text} from "@chakra-ui/react";
+
 import { useSelector } from "react-redux";
 import MoviesIndexItem from "../MovieIndexItem";
 

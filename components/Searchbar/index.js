@@ -1,9 +1,8 @@
 import React from "react";
 import {useState, useEffect} from "react"
-import { useSelector, useDispatch } from "react-redux";
-import { Input, Stack, Spacer, Container, Box, Button, Flex, ButtonGroup, Heading } from "@chakra-ui/react";
-import style from "./searchbar.module.css"
-import MoviesIndex from "../MoviesIndex";
+import {  useDispatch } from "react-redux";
+import { Input,  Spacer, Box, Button, Flex, ButtonGroup, Heading } from "@chakra-ui/react";
+
 import { addMovies } from "../../store/movies";
 
 

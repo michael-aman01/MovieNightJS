@@ -1,6 +1,6 @@
 import React from "react";
-import {useState,useEffect} from "react"
-import {Card, Flex, Tag, Tab, TabList, Tabs, TabIndicator, TabPanels , TabPanel, Stack, Heading, AspectRatio, CardBody, CardFooter, Button, Image, CardHeader, Text,Box,  VStack, StackDivider, Container, Divider, Center} from "@chakra-ui/react"
+
+import {Card, Flex, Tag,  Stack, Heading, CardBody, CardFooter, Button, Image,  Text} from "@chakra-ui/react"
 import { useDispatch } from "react-redux";
 import { removeBookmark } from "../../store/bookmarks";
 import { useSelector } from "react-redux";

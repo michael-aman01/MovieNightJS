@@ -1,12 +1,12 @@
 import React from "react"
-import { AddIcon} from '@chakra-ui/icons'
 
-import { useDisclosure, RadioGroup,DrawerCloseButton, Button, Tag, Stack, Radio, Drawer, DrawerOverlay, DrawerContent, DrawerBody, DrawerHeader, CloseButton, Flex } from "@chakra-ui/react"
+
+import { useDisclosure,DrawerCloseButton, Button, Drawer, DrawerOverlay, DrawerContent, DrawerBody, DrawerHeader, Flex } from "@chakra-ui/react"
 
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import bookmarksReducer, { loadBookmarks } from "../../store/bookmarks";
-import MoviesIndexItem from "../MovieIndexItem";
+import  { loadBookmarks } from "../../store/bookmarks";
+
 import BookmarksIndexItem from "../BookmarkIndexItem";
 
 export default function BookmarksIndex(){

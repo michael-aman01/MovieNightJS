@@ -1,25 +1,23 @@
 import HeaderBar from "../HeaderBar";
 
 import React from "react";
-import {useState, useEffect} from "react"
-import MoviesIndexItem from "../MovieIndexItem";
-import {  Button, Grid, GridItem, Text, Box, Flex, Container } from '@chakra-ui/react'
-import Searchbar from "../Searchbar";
+import {useState} from "react"
+
+import {Flex} from '@chakra-ui/react'
+
 import MoviesIndex from "../MoviesIndex";
-import BookmarksIndex  from "../BookmarksIndex";
+
 import { useSelector } from "react-redux";
-import { loadBookmarks } from "../../store/bookmarks";
+
 import styles from "./app.module.css"
+
+
 export default function App(){
   const [showBookmarks, setShowBookmarks] = useState(false)
 
   const bookmarks = useSelector(state => state.bookmarks)
   const [latestBookmarks,  setLatestBookmarks] = useState(bookmarks.current)
-  // useEffect(() => {
-  //   let updatedBookmarks = loadBookmarks()
-  //   setLatestBookmarks(updatedBookmarks)
 
-  // },[bookmarks])
 
 
     return(
@@ -29,14 +27,6 @@ export default function App(){
       
       <MoviesIndex></MoviesIndex>
     </Flex>
-
-
-
-    
-
-
-
-
 
         </>
     )

@@ -1,11 +1,11 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {Card, Flex, Tag, Tab, TabList, Tabs, TabIndicator, TabPanels , TabPanel, Stack, Heading, AspectRatio, CardBody, CardFooter, Button, Image, CardHeader, Text,Box,  VStack, StackDivider, Container, Divider, Center} from "@chakra-ui/react"
 import { addBookmarkToStorage, loadBookmarks } from "../../store/bookmarks";
-import { useDisclosure } from '@chakra-ui/react'
+
 import { useSelector, useDispatch } from "react-redux";
 import { removeBookmark } from "../../store/bookmarks";
-import { AddIcon, MinusIcon } from "@chakra-ui/icons";
+import { AddIcon } from "@chakra-ui/icons";
 
 
 export default function MoviesIndexItem({movieData}){
