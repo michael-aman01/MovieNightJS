@@ -4,9 +4,11 @@ import { combineReducers } from 'redux';
 import { applyMiddleware } from 'redux';
 import thunk from "redux-thunk";
 import MovieReducer from './movies';
+import bookmarksReducer from './bookmarks';
 
 const rootReducer = combineReducers({
-    movies: MovieReducer
+    movies: MovieReducer,
+    bookmarks: bookmarksReducer
 })
 let enhancer
 

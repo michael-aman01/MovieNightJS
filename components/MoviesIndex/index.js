@@ -4,6 +4,9 @@ import { Input, Stack, Container, Box, SimpleGrid, VStack, StackDivider, Flex} f
 import Searchbar from "../Searchbar";
 import { useSelector } from "react-redux";
 import MoviesIndexItem from "../MovieIndexItem";
+
+
+
 export default function MoviesIndex(){
     const stateMovies = useSelector(state => state.movies)
     const [movies, setMovies] = useState()
@@ -23,22 +26,13 @@ export default function MoviesIndex(){
     return (
         <>
 
-<Flex>
+<Flex style={{"width":"100vw", "height": "100vh", "justifyContent":"center", "backgroundColor":"green", "padding":"5%"}}>
  
-
-  movies: {Object.values(stateMovies).length}
             {movies  && 
         
-<VStack
-  divider={<StackDivider borderColor='gray.200' />}
-  spacing={4}
-  align='stretch'
-  w="90%"
-  h="100%"
-  padding="10%"
->
+<SimpleGrid columns={4} pacingX='40px' spacingY='20px'>
     {Object.values(movies).map((movie,i) => (<MoviesIndexItem movieData={movie} key={i}></MoviesIndexItem>))}
-        </VStack>
+      </SimpleGrid>
                 
     
               

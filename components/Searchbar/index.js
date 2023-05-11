@@ -8,7 +8,7 @@ import { addMovies } from "../../pages/store/movies";
 
 
 export default function Searchbar(){
-    const [title, setTitle] = useState("Avengers Endgame")
+    const [title, setTitle] = useState("")
     const [data, setData] = useState()
     const [searchResults, setSearchResults] = useState()
 
@@ -21,16 +21,21 @@ export default function Searchbar(){
     },[searchResults])
 
     const getData = async () => {
-
+        if(title.length === 0){
+            alert("Please enter a movie title")
+            return null
+        }
         try{
+         
             const params = new URLSearchParams({s: title, r: "json"})
+            
             const req = await fetch(`api/search/`, {
                 method: "POST", 
                 body: JSON.stringify({"title":title}),
             })
             const data = await req.json()
-            console.log(data)
-            setSearchResults(data.Search)
+            
+            setSearchResults(data.filter(movie => movie.Type === "movie"))
         }catch(error){
             console.log(error)
         }
@@ -40,10 +45,10 @@ export default function Searchbar(){
         <>
 
 
-  <Flex minWidth='max-content' alignItems='center' gap='2' justifyContent="center">
+  <Flex minWidth='max-content' w="500px" bg="transparent" alignItems='center' gap='2' justifyContent="center">
   <Box p='2' >
     <Heading size='lg'>
-        <Input placeholder="Search for Movie" variant="outline"></Input>
+        <Input placeholder="Search for Movie" variant="outline" w="500px" size="lg" onChange={(e) => setTitle(e.target.value)}></Input>
     </Heading>
   </Box>
   <Spacer />
