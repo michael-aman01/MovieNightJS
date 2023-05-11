@@ -45,7 +45,7 @@ export default function Searchbar(){
         <>
 
 
-  <Flex minWidth='max-content' w="500px" bg="transparent" alignItems='center' gap='2' justifyContent="center">
+  <Flex color="white" minWidth='max-content' w="500px" bg="transparent" alignItems='center' gap='2' justifyContent="center">
   <Box p='2' >
     <Heading size='lg'>
         <Input placeholder="Search for Movie" variant="outline" w="500px" size="lg" onChange={(e) => setTitle(e.target.value)}></Input>

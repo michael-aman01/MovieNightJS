@@ -5,7 +5,7 @@ import Searchbar from "../Searchbar";
 import { useSelector } from "react-redux";
 import MoviesIndexItem from "../MovieIndexItem";
 
-
+import styles from "./movieindex.module.css"
 
 export default function MoviesIndex(){
     const stateMovies = useSelector(state => state.movies)
@@ -26,11 +26,10 @@ export default function MoviesIndex(){
     return (
         <>
 
-<Flex style={{"width":"100vw", "height": "100vh", "justifyContent":"center", "backgroundColor":"green", "padding":"5%"}}>
  
             {movies  && 
         
-<SimpleGrid columns={4} pacingX='40px' spacingY='20px'>
+<SimpleGrid columns={4} pacingX='10px' spacingY='20px' className={styles.movies_index_container} >
     {Object.values(movies).map((movie,i) => (<MoviesIndexItem movieData={movie} key={i}></MoviesIndexItem>))}
       </SimpleGrid>
                 
@@ -38,7 +37,7 @@ export default function MoviesIndex(){
               
             }
        
-</Flex>
+
 
         </>
     )

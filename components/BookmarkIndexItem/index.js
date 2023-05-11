@@ -4,6 +4,7 @@ import {Card, Flex, Tag, Tab, TabList, Tabs, TabIndicator, TabPanels , TabPanel,
 import { useDispatch } from "react-redux";
 import { removeBookmark } from "../../pages/store/bookmarks";
 import { useSelector } from "react-redux";
+import { MinusIcon } from "@chakra-ui/icons";
 export default function BookmarksIndexItem({movieData}){
     const dispatch = useDispatch()
     const bookmarks = useSelector(state => state.bookmarks)
@@ -40,7 +41,7 @@ export default function BookmarksIndexItem({movieData}){
          </CardBody>
      
          <CardFooter>
-           <Button variant='solid' colorScheme='blue' id={movieData.imdbID} onClick={handleBookmarkRemoval}>
+         <Button leftIcon={<MinusIcon/>} colorScheme="red" id={movieData.imdbID} onClick={handleBookmarkRemoval}>
              Remove Bookmark
            </Button>
          </CardFooter>

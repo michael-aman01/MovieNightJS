@@ -1,5 +1,5 @@
 import React from "react"
-import { PhoneIcon, AddIcon, WarningIcon} from '@chakra-ui/icons'
+import { AddIcon} from '@chakra-ui/icons'
 
 import { useDisclosure, RadioGroup,DrawerCloseButton, Button, Tag, Stack, Radio, Drawer, DrawerOverlay, DrawerContent, DrawerBody, DrawerHeader, CloseButton, Flex } from "@chakra-ui/react"
 
@@ -33,8 +33,8 @@ if(currentBookmarks){
 return (
   <>
 
-
-    <Button onClick={onOpen} style={{"position":"sticky", "top":50, "width":"fit-content"}} >
+  
+    <Button onClick={onOpen} size="md" style={{"position":"sticky", "top":50, "width":"fit-content", "height":"100%", "zIndex":2}} variant='solid' colorScheme="teal">
         Edit Bookmarks
     </Button>
     <Drawer placement="left" onClose={onClose} isOpen={isOpen} size="lg">

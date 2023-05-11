@@ -1,0 +1,7 @@
+.movies_index_container {
+
+    padding: 7%;
+    background-image:  radial-gradient(circle at 70% 30%, #ff525233 1%, hsla(0, 0%, 100%, 0) 47%),radial-gradient(circle at 52% 50%, #000000 8%, hsla(0, 0%, 100%, 0) 43%),radial-gradient(circle at 43% 50%, #6a52ff4d 0%, rgba(255,255,255,0) 64%),linear-gradient(289deg, #000000 0%, rgb(0, 0, 0) 36%);
+    box-sizing: border-box;
+
+}
