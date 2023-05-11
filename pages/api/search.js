@@ -24,7 +24,7 @@
               const data = await reqData.json()
               return requestIMDB(res, data)
       }else{
-        console.log("request error")
+        return res.status(200).json([])
       }
 
   }

@@ -37,7 +37,7 @@ export default function Searchbar(){
             
             setSearchResults(data.filter(movie => movie.Type === "movie"))
         }catch(error){
-            console.log(error)
+            alert("sorry no search results found! Try another title")
         }
     }
 
