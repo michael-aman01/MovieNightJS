@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useState } from "react";
 import {Card, Flex, Tag, Tab, TabList, Tabs, TabIndicator, TabPanels , TabPanel, Stack, Heading, AspectRatio, CardBody, CardFooter, Button, Image, CardHeader, Text,Box,  VStack, StackDivider, Container, Divider, Center, Spinner} from "@chakra-ui/react"
 import { addBookmarkToStorage, loadBookmarks } from "../../store/bookmarks";
@@ -8,44 +8,17 @@ import { removeBookmark } from "../../store/bookmarks";
 import { AddIcon } from "@chakra-ui/icons";
 
 
-
 export default function MoviesIndexItem({movieData}){
     const detailKeys = Object.keys(movieData).slice(0,9)
     const [currentBookmarks, setCurrentBookmarks] = useState([])
     const bookmarks = useSelector(state => state.bookmarks)
-    const [currentButton, setCurrentButton] = useState()
 
     useState(() => {
       if(currentBookmarks.length === 0){
         let b = loadBookmarks()
         setCurrentBookmarks(b)
-        
-
-      if(b.filter(movie => movie.imdbID === movieData.imdbID).length === 0){
-       setCurrentButton(bookmarkButton(movieData, "green", "Add to Bookmarks"))
-      }else{
-        setCurrentBookmarks(null)
       }
-                     
-    }
-
-      
     },[])
-
-    // useEffect(() => {
-    //   //detect removal of bookmark from bookmark index and readd green button
-    //   if(currentButton === null){
-    //     let current = loadBookmarks()
-    //     console.log(current)
-    //     if(current !== null){
-    //       current.filter(movie => movie.imdbID === movieData.imdbID).length === 0 ? setCurrentButton(bookmarkButton(movieData, "green", "Add to Bookmarks")) : setCurrentButton(null)
-    //     }
-    //   }
-
-
-      
-    // }, [bookmarks])
-
 
 
     useState(() => {
@@ -61,12 +34,12 @@ export default function MoviesIndexItem({movieData}){
 
 
     const handleAddBookmark = (e, info) => {
-        e.preventDefault()
-        dispatch(addBookmarkToStorage(info))
-        let newBookMarks = loadBookmarks()
-        setCurrentBookmarks(newBookMarks)
-        setCurrentButton(null)
-        return bookmarks
+      e.preventDefault()
+      dispatch(addBookmarkToStorage(info))
+      let newBookMarks = loadBookmarks()
+      setCurrentBookmarks(newBookMarks)
+      
+      return bookmarks
       }
 
 
@@ -77,11 +50,7 @@ export default function MoviesIndexItem({movieData}){
         setCurrentBookmarks(newBookMarks)
         
     }
-    function bookmarkButton(data,  color, buttonText){
-    return (
-      <Button colorScheme={color}  leftIcon={<AddIcon />} id={data.imdbID} onClick={(e) => handleAddBookmark(e, data)}>{buttonText}</Button>
-    )
-}
+    
 
     return (
         <>
@@ -145,7 +114,13 @@ export default function MoviesIndexItem({movieData}){
     </TabPanels>
   </Tabs>
   <Center>
-              {currentButton}
+
+
+            {currentBookmarks &&  (
+                currentBookmarks.filter(movie => movie.imdbID === movieData.imdbID).length === 0 ?  <Button colorScheme="green"  leftIcon={<AddIcon />} id={movieData.imdbID} onClick={(e) => handleAddBookmark(e, movieData)}>Add to Bookmarks</Button> : null
+                     
+            )}
+
          </Center>
                   </CardBody>
                 </Card>
