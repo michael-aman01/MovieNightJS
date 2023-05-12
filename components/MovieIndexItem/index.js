@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import {Card, Flex, Tag, Tab, TabList, Tabs, TabIndicator, TabPanels , TabPanel, Stack, Heading, AspectRatio, CardBody, CardFooter, Button, Image, CardHeader, Text,Box,  VStack, StackDivider, Container, Divider, Center} from "@chakra-ui/react"
+import {Card, Flex, Tag, Tab, TabList, Tabs, TabIndicator, TabPanels , TabPanel, Stack, Heading, AspectRatio, CardBody, CardFooter, Button, Image, CardHeader, Text,Box,  VStack, StackDivider, Container, Divider, Center, Spinner} from "@chakra-ui/react"
 import { addBookmarkToStorage, loadBookmarks } from "../../store/bookmarks";
 
 import { useSelector, useDispatch } from "react-redux";
@@ -14,12 +14,18 @@ export default function MoviesIndexItem({movieData}){
     const bookmarks = useSelector(state => state.bookmarks)
 
     useState(() => {
+      if(currentBookmarks.length === 0){
+        let b = loadBookmarks()
+        setCurrentBookmarks(b)
+      }
+    },[])
+    useState(() => {
       if(bookmarks.current.length === 0 || bookmarks.current.length != currentBookmarks.length){
         let newData = loadBookmarks()
         setCurrentBookmarks(newData)
 
       }
-    },[bookmarks])
+    },[bookmarks, currentBookmarks])
 
     const dispatch = useDispatch()
 
@@ -43,9 +49,10 @@ export default function MoviesIndexItem({movieData}){
         
     }
     
+    if(movieData && currentBookmarks){
     return (
         <>
-        {movieData && currentBookmarks && (
+
        
           <Container >
         
@@ -116,9 +123,11 @@ export default function MoviesIndexItem({movieData}){
                 </Card>
  
           </Container>
-
-        )}
         </>
     )
-    
+    }else{
+      return (
+        <Spinner size='xl' />
+      )
+    }
 }
