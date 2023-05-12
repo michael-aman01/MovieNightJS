@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {Card, Flex, Tag, Tab, TabList, Tabs, TabIndicator, TabPanels , TabPanel, Stack, Heading, AspectRatio, CardBody, CardFooter, Button, Image, CardHeader, Text,Box,  VStack, StackDivider, Container, Divider, Center, Spinner} from "@chakra-ui/react"
 import { addBookmarkToStorage, loadBookmarks } from "../../store/bookmarks";
 
@@ -12,17 +12,13 @@ export default function MoviesIndexItem({movieData}){
     const detailKeys = Object.keys(movieData).slice(0,9)
     const [currentBookmarks, setCurrentBookmarks] = useState([])
     const bookmarks = useSelector(state => state.bookmarks)
+ 
+    const [currentButton, setCurrentButton] = useState()
 
 
-    useState(() => {
-      if(currentBookmarks.length === 0){
-        let b = loadBookmarks()
-        setCurrentBookmarks(b)
-      }
-    },[bookmarks])
 
-
-    useState(() => {
+    useEffect(() => {
+      //handle updates and changes to state's bookmarks
       if(bookmarks.current.length === 0 || bookmarks.current.length != currentBookmarks.length){
         let newData = loadBookmarks()
         setCurrentBookmarks(newData)
@@ -30,34 +26,60 @@ export default function MoviesIndexItem({movieData}){
       }
     },[bookmarks, currentBookmarks])
 
+    useEffect(() => {
+      //initial load handle button (null if movie already bookmarked else add button)
+      let bm = JSON.parse(localStorage.getItem("movie-bookmarks"))
+      if(bm){
+        if(bm.filter(movie => movie.imdbID === movieData.imdbID).length > 0){
+          setCurrentButton(null)
+        }else{
+          setCurrentButton(<Button colorScheme="green"  leftIcon={<AddIcon />} id={movieData.imdbID} onClick={handleBookmark}>Add to Bookmarks</Button>)
+        }
+      }
+    },[])
+
+    useEffect(() => {
+      //handle removal of movie from bookmarks (add button to widget)
+      let bm = JSON.parse(localStorage.getItem("movie-bookmarks"))
+      if(bm){
+        if(bm.filter(movie => movie.imdbID === movieData.imdbID).length === 0){
+          setCurrentButton(<Button colorScheme="green"  leftIcon={<AddIcon />} id={movieData.imdbID} onClick={handleBookmark}>Add to Bookmarks</Button>)
+
+        }else{
+          setCurrentButton(null)
+        }
+      }
+    },[bookmarks])
+
     const dispatch = useDispatch()
 
 
-    const handleBookmark = async (e) => {
-      let current = await loadBookmarks()
-      if(current){
-        if(current.filter(movie => movie.imdbID === movieData.imdbID).length === 0){
+    const handleBookmark = (e) => {
+      let current = JSON.parse(localStorage.getItem("movie-bookmarks"))
+      
+      if(!current){
+
           dispatch(addBookmarkToStorage(movieData))
   
           setCurrentBookmarks(current)
           setCurrentButton(null)
         
+        
+      }else{
+        if(current.filter(movie => movie.imdbID === movieData.imdbID).length === 0){
+          dispatch(addBookmarkToStorage(movieData))
+  
+          setCurrentBookmarks(current)
+          setCurrentButton(null)
         }
       }
    
       return current
     }
 
-    const handleAddBookmark = (e, info) => {
-      e.preventDefault()
-    
-      
-      return bookmarks
-      }
 
 
- 
-    const [currentButton, setCurrentButton] = useState(<Button colorScheme="green"  leftIcon={<AddIcon />} id={movieData.imdbID} onClick={handleBookmark}>Add to Bookmarks</Button> )
+
     return (
         <>
 
