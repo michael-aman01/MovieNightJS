@@ -13,12 +13,13 @@ export default function MoviesIndexItem({movieData}){
     const [currentBookmarks, setCurrentBookmarks] = useState([])
     const bookmarks = useSelector(state => state.bookmarks)
 
+
     useState(() => {
       if(currentBookmarks.length === 0){
         let b = loadBookmarks()
         setCurrentBookmarks(b)
       }
-    },[])
+    },[bookmarks])
 
 
     useState(() => {
@@ -32,26 +33,28 @@ export default function MoviesIndexItem({movieData}){
     const dispatch = useDispatch()
 
 
+    const handleBookmark = async (e) => {
+      let current = await loadBookmarks()
+      if(current.filter(movie => movie.imdbID === movieData.imdbID).length === 0){
+        dispatch(addBookmarkToStorage(movieData))
+
+        setCurrentBookmarks(current)
+        setCurrentButton(null)
+      
+      }
+      return current
+    }
 
     const handleAddBookmark = (e, info) => {
       e.preventDefault()
-      dispatch(addBookmarkToStorage(info))
-      let newBookMarks = loadBookmarks()
-      setCurrentBookmarks(newBookMarks)
+    
       
       return bookmarks
       }
 
 
-      const handleBookmarkRemoval = (e) => {
-        e.preventDefault()
-        dispatch(removeBookmark(e.target.id))
-        let newBookMarks = loadBookmarks()
-        setCurrentBookmarks(newBookMarks)
-        
-    }
-    
-
+ 
+    const [currentButton, setCurrentButton] = useState(<Button colorScheme="green"  leftIcon={<AddIcon />} id={movieData.imdbID} onClick={handleBookmark}>Add to Bookmarks</Button> )
     return (
         <>
 
@@ -116,10 +119,9 @@ export default function MoviesIndexItem({movieData}){
   <Center>
 
 
-            {currentBookmarks &&  (
-                currentBookmarks.filter(movie => movie.imdbID === movieData.imdbID).length === 0 ?  <Button colorScheme="green"  leftIcon={<AddIcon />} id={movieData.imdbID} onClick={(e) => handleAddBookmark(e, movieData)}>Add to Bookmarks</Button> : null
+         {currentButton}
                      
-            )}
+            
 
          </Center>
                   </CardBody>
