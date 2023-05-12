@@ -1,61 +1,25 @@
 "use strict";
+/*
+ * ATTENTION: An "eval-source-map" devtool has been used.
+ * This devtool is neither made for production nor for readable output files.
+ * It uses "eval()" calls to create a separate source file with attached SourceMaps in the browser devtools.
+ * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
+ * or disable the default devtool with "devtool: false".
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
+ */
 (() => {
 var exports = {};
-exports.id = 198;
-exports.ids = [198];
+exports.id = "pages/api/search";
+exports.ids = ["pages/api/search"];
 exports.modules = {
 
-/***/ 364:
+/***/ "(api)/./pages/api/search.js":
+/*!*****************************!*\
+  !*** ./pages/api/search.js ***!
+  \*****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ handler)
-/* harmony export */ });
-//data fetch api here with getSer
-async function handler(req, res) {
-    const baseUrl = process.env.REACT_APP_API_BASE;
-    const title = JSON.parse(req.body).title;
-    const query = `?s=${title.toLowerCase().split(" ").join("%20")}&r=json`;
-    const url = `${baseUrl}${query}`;
-    console.log(url);
-    const options = {
-        method: "GET",
-        headers: {
-            "content-type": "application/octet-stream",
-            "X-RapidAPI-Key": process.env.REACT_APP_API_KEY,
-            "X-RapidAPI-Host": process.env.REACT_APP_API_HOST
-        }
-    };
-    const reqData = await fetch(url, options) //initial fetch to get IMDB ids for possible results
-    ;
-    if (reqData.status == 200) {
-        const data = await reqData.json();
-        return requestIMDB(res, data);
-    } else {
-        return res.status(200).json([]);
-    }
-}
-async function requestIMDB(responseObject, moviesJSONData) {
-    const baseUrl = process.env.REACT_APP_API_BASE;
-    const movieURLs = moviesJSONData.Search.map((movie)=>`${baseUrl}?r=json&i=${movie.imdbID}`);
-    const options = {
-        method: "GET",
-        headers: {
-            "content-type": "application/octet-stream",
-            "X-RapidAPI-Key": process.env.REACT_APP_API_KEY,
-            "X-RapidAPI-Host": process.env.REACT_APP_API_HOST
-        }
-    };
-    const movieDetails = await Promise.all(await movieURLs.map(async (url)=>{
-        const req = await fetch(url, options);
-        const data = await req.json();
-        return data;
-    }));
-    console.log(movieDetails);
-    return responseObject.status(200).json(movieDetails);
-}
-
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ handler)\n/* harmony export */ });\n//data fetch api here with getSer\nasync function handler(req, res) {\n    const baseUrl = process.env.REACT_APP_API_BASE;\n    const title = JSON.parse(req.body).title;\n    const query = `?s=${title.toLowerCase().split(\" \").join(\"%20\")}&r=json`;\n    const url = `${baseUrl}${query}`;\n    console.log(url);\n    const options = {\n        method: \"GET\",\n        headers: {\n            \"content-type\": \"application/octet-stream\",\n            \"X-RapidAPI-Key\": process.env.REACT_APP_API_KEY,\n            \"X-RapidAPI-Host\": process.env.REACT_APP_API_HOST\n        }\n    };\n    const reqData = await fetch(url, options) //initial fetch to get IMDB ids for possible results\n    ;\n    if (reqData.status == 200) {\n        const data = await reqData.json();\n        return requestIMDB(res, data);\n    } else {\n        return res.status(200).json([]);\n    }\n}\nasync function requestIMDB(responseObject, moviesJSONData) {\n    const baseUrl = process.env.REACT_APP_API_BASE;\n    const movieURLs = moviesJSONData.Search.map((movie)=>`${baseUrl}?r=json&i=${movie.imdbID}`);\n    const options = {\n        method: \"GET\",\n        headers: {\n            \"content-type\": \"application/octet-stream\",\n            \"X-RapidAPI-Key\": process.env.REACT_APP_API_KEY,\n            \"X-RapidAPI-Host\": process.env.REACT_APP_API_HOST\n        }\n    };\n    const movieDetails = await Promise.all(await movieURLs.map(async (url)=>{\n        const req = await fetch(url, options);\n        const data = await req.json();\n        return data;\n    }));\n    console.log(movieDetails);\n    return responseObject.status(200).json(movieDetails);\n}\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKGFwaSkvLi9wYWdlcy9hcGkvc2VhcmNoLmpzLmpzIiwibWFwcGluZ3MiOiI7Ozs7QUFBQSxpQ0FBaUM7QUFLaEIsZUFBZUEsUUFBUUMsR0FBRyxFQUFFQyxHQUFHLEVBQUM7SUFDN0MsTUFBTUMsVUFBVUMsUUFBUUMsR0FBRyxDQUFDQyxrQkFBa0I7SUFDOUMsTUFBTUMsUUFBUUMsS0FBS0MsS0FBSyxDQUFDUixJQUFJUyxJQUFJLEVBQUVILEtBQUs7SUFDeEMsTUFBTUksUUFBUSxDQUFDLEdBQUcsRUFBRUosTUFBTUssV0FBVyxHQUFHQyxLQUFLLENBQUMsS0FBS0MsSUFBSSxDQUFDLE9BQU8sT0FBTyxDQUFDO0lBQ3ZFLE1BQU1DLE1BQU0sQ0FBQyxFQUFFWixRQUFRLEVBQUVRLE1BQU0sQ0FBQztJQUNoQ0ssUUFBUUMsR0FBRyxDQUFDRjtJQUNaLE1BQU1HLFVBQVU7UUFDZEMsUUFBUTtRQUNSQyxTQUFTO1lBQ1AsZ0JBQWdCO1lBQ2hCLGtCQUFrQmhCLFFBQVFDLEdBQUcsQ0FBQ2dCLGlCQUFpQjtZQUMvQyxtQkFBbUJqQixRQUFRQyxHQUFHLENBQUNpQixrQkFBa0I7UUFDbkQ7SUFDRjtJQUVBLE1BQU1DLFVBQVUsTUFBTUMsTUFBTVQsS0FBS0csU0FBUyxvREFBb0Q7O0lBRTlGLElBQUdLLFFBQVFFLE1BQU0sSUFBSSxLQUFJO1FBQ2YsTUFBTUMsT0FBTyxNQUFNSCxRQUFRSSxJQUFJO1FBQy9CLE9BQU9DLFlBQVkxQixLQUFLd0I7SUFDaEMsT0FBSztRQUNILE9BQU94QixJQUFJdUIsTUFBTSxDQUFDLEtBQUtFLElBQUksQ0FBQyxFQUFFO0lBQ2hDLENBQUM7QUFFTCxDQUFDO0FBRUQsZUFBZUMsWUFBWUMsY0FBYyxFQUFFQyxjQUFjLEVBQUM7SUFDeEQsTUFBTTNCLFVBQVVDLFFBQVFDLEdBQUcsQ0FBQ0Msa0JBQWtCO0lBQzlDLE1BQU15QixZQUFZRCxlQUFlRSxNQUFNLENBQUNDLEdBQUcsQ0FBQ0MsQ0FBQUEsUUFBUyxDQUFDLEVBQUUvQixRQUFRLFVBQVUsRUFBRStCLE1BQU1DLE1BQU0sQ0FBQyxDQUFDO0lBQzFGLE1BQU1qQixVQUFVO1FBQ2RDLFFBQVE7UUFDUkMsU0FBUztZQUNQLGdCQUFnQjtZQUNoQixrQkFBa0JoQixRQUFRQyxHQUFHLENBQUNnQixpQkFBaUI7WUFDL0MsbUJBQW1CakIsUUFBUUMsR0FBRyxDQUFDaUIsa0JBQWtCO1FBQ25EO0lBQ0Y7SUFFQSxNQUFNYyxlQUFlLE1BQU1DLFFBQVFDLEdBQUcsQ0FBQyxNQUFNUCxVQUFVRSxHQUFHLENBQUMsT0FBTWxCLE1BQU87UUFDdEUsTUFBTWQsTUFBTSxNQUFNdUIsTUFBTVQsS0FBS0c7UUFDN0IsTUFBTVEsT0FBTyxNQUFNekIsSUFBSTBCLElBQUk7UUFFM0IsT0FBT0Q7SUFDVDtJQUVBVixRQUFRQyxHQUFHLENBQUNtQjtJQUNaLE9BQU9QLGVBQWVKLE1BQU0sQ0FBQyxLQUFLRSxJQUFJLENBQUNTO0FBQ3pDIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vbW92aWVfbmlnaHRfanMvLi9wYWdlcy9hcGkvc2VhcmNoLmpzPzVkM2EiXSwic291cmNlc0NvbnRlbnQiOlsiLy9kYXRhIGZldGNoIGFwaSBoZXJlIHdpdGggZ2V0U2VyXG5cblxuXG5cbiAgZXhwb3J0IGRlZmF1bHQgYXN5bmMgZnVuY3Rpb24gaGFuZGxlcihyZXEsIHJlcyl7XG4gICAgY29uc3QgYmFzZVVybCA9IHByb2Nlc3MuZW52LlJFQUNUX0FQUF9BUElfQkFTRVxuICAgIGNvbnN0IHRpdGxlID0gSlNPTi5wYXJzZShyZXEuYm9keSkudGl0bGVcbiAgICBjb25zdCBxdWVyeSA9IGA/cz0ke3RpdGxlLnRvTG93ZXJDYXNlKCkuc3BsaXQoXCIgXCIpLmpvaW4oXCIlMjBcIil9JnI9anNvbmBcbiAgICBjb25zdCB1cmwgPSBgJHtiYXNlVXJsfSR7cXVlcnl9YFxuICAgIGNvbnNvbGUubG9nKHVybClcbiAgICBjb25zdCBvcHRpb25zID0ge1xuICAgICAgbWV0aG9kOiBcIkdFVFwiLFxuICAgICAgaGVhZGVyczoge1xuICAgICAgICBcImNvbnRlbnQtdHlwZVwiOiAnYXBwbGljYXRpb24vb2N0ZXQtc3RyZWFtJyxcbiAgICAgICAgXCJYLVJhcGlkQVBJLUtleVwiOiBwcm9jZXNzLmVudi5SRUFDVF9BUFBfQVBJX0tFWSxcbiAgICAgICAgXCJYLVJhcGlkQVBJLUhvc3RcIjogcHJvY2Vzcy5lbnYuUkVBQ1RfQVBQX0FQSV9IT1NUXG4gICAgICB9XG4gICAgfVxuXG4gICAgY29uc3QgcmVxRGF0YSA9IGF3YWl0IGZldGNoKHVybCwgb3B0aW9ucykgLy9pbml0aWFsIGZldGNoIHRvIGdldCBJTURCIGlkcyBmb3IgcG9zc2libGUgcmVzdWx0c1xuXG4gICAgaWYocmVxRGF0YS5zdGF0dXMgPT0gMjAwKXtcbiAgICAgICAgICAgICAgY29uc3QgZGF0YSA9IGF3YWl0IHJlcURhdGEuanNvbigpXG4gICAgICAgICAgICAgIHJldHVybiByZXF1ZXN0SU1EQihyZXMsIGRhdGEpXG4gICAgICB9ZWxzZXtcbiAgICAgICAgcmV0dXJuIHJlcy5zdGF0dXMoMjAwKS5qc29uKFtdKVxuICAgICAgfVxuXG4gIH1cblxuICBhc3luYyBmdW5jdGlvbiByZXF1ZXN0SU1EQihyZXNwb25zZU9iamVjdCwgbW92aWVzSlNPTkRhdGEpe1xuICAgIGNvbnN0IGJhc2VVcmwgPSBwcm9jZXNzLmVudi5SRUFDVF9BUFBfQVBJX0JBU0VcbiAgICBjb25zdCBtb3ZpZVVSTHMgPSBtb3ZpZXNKU09ORGF0YS5TZWFyY2gubWFwKG1vdmllID0+IGAke2Jhc2VVcmx9P3I9anNvbiZpPSR7bW92aWUuaW1kYklEfWApXG4gICAgY29uc3Qgb3B0aW9ucyA9IHtcbiAgICAgIG1ldGhvZDogXCJHRVRcIixcbiAgICAgIGhlYWRlcnM6IHtcbiAgICAgICAgXCJjb250ZW50LXR5cGVcIjogJ2FwcGxpY2F0aW9uL29jdGV0LXN0cmVhbScsXG4gICAgICAgIFwiWC1SYXBpZEFQSS1LZXlcIjogcHJvY2Vzcy5lbnYuUkVBQ1RfQVBQX0FQSV9LRVksXG4gICAgICAgIFwiWC1SYXBpZEFQSS1Ib3N0XCI6IHByb2Nlc3MuZW52LlJFQUNUX0FQUF9BUElfSE9TVFxuICAgICAgfVxuICAgIH1cbiAgICBcbiAgICBjb25zdCBtb3ZpZURldGFpbHMgPSBhd2FpdCBQcm9taXNlLmFsbChhd2FpdCBtb3ZpZVVSTHMubWFwKGFzeW5jIHVybCA9PiB7XG4gICAgICBjb25zdCByZXEgPSBhd2FpdCBmZXRjaCh1cmwsIG9wdGlvbnMpXG4gICAgICBjb25zdCBkYXRhID0gYXdhaXQgcmVxLmpzb24oKVxuXG4gICAgICByZXR1cm4gZGF0YVxuICAgIH0pKTtcblxuICAgIGNvbnNvbGUubG9nKG1vdmllRGV0YWlscylcbiAgICByZXR1cm4gcmVzcG9uc2VPYmplY3Quc3RhdHVzKDIwMCkuanNvbihtb3ZpZURldGFpbHMpXG4gIH1cbiAgIl0sIm5hbWVzIjpbImhhbmRsZXIiLCJyZXEiLCJyZXMiLCJiYXNlVXJsIiwicHJvY2VzcyIsImVudiIsIlJFQUNUX0FQUF9BUElfQkFTRSIsInRpdGxlIiwiSlNPTiIsInBhcnNlIiwiYm9keSIsInF1ZXJ5IiwidG9Mb3dlckNhc2UiLCJzcGxpdCIsImpvaW4iLCJ1cmwiLCJjb25zb2xlIiwibG9nIiwib3B0aW9ucyIsIm1ldGhvZCIsImhlYWRlcnMiLCJSRUFDVF9BUFBfQVBJX0tFWSIsIlJFQUNUX0FQUF9BUElfSE9TVCIsInJlcURhdGEiLCJmZXRjaCIsInN0YXR1cyIsImRhdGEiLCJqc29uIiwicmVxdWVzdElNREIiLCJyZXNwb25zZU9iamVjdCIsIm1vdmllc0pTT05EYXRhIiwibW92aWVVUkxzIiwiU2VhcmNoIiwibWFwIiwibW92aWUiLCJpbWRiSUQiLCJtb3ZpZURldGFpbHMiLCJQcm9taXNlIiwiYWxsIl0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///(api)/./pages/api/search.js\n");
 
 /***/ })
 
@@ -66,7 +30,7 @@ async function requestIMDB(responseObject, moviesJSONData) {
 var __webpack_require__ = require("../../webpack-api-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = (__webpack_exec__(364));
+var __webpack_exports__ = (__webpack_exec__("(api)/./pages/api/search.js"));
 module.exports = __webpack_exports__;
 
 })();

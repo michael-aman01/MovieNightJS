@@ -29,7 +29,7 @@ if(movies !== undefined){
  
             {movies  && 
         
-<SimpleGrid columns={4} pacingX='10px' spacingY='20px' className={styles.movies_index_container} >
+<SimpleGrid columns={4} spacingX='10px' spacingY='20px' className={styles.movies_index_container} >
     {Object.values(movies).map((movie,i) => (<MoviesIndexItem movieData={movie} key={i}></MoviesIndexItem>))}
       </SimpleGrid>
                 

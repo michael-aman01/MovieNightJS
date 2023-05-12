@@ -24,7 +24,7 @@ export default function BookmarksIndexItem({movieData}){
        overflow='hidden'
        variant='outline'
      >
-   <Image src={movieData.Poster} objectFit='scale-down' justifyContent="center"/>
+   <Image src={movieData.Poster} alt="poster" objectFit='scale-down' justifyContent="center"/>
 
      
        <Stack>

@@ -45,14 +45,14 @@ export default function MoviesIndexItem({movieData}){
     
     return (
         <>
-        {movieData && bookmarks.current && (
+        {movieData && currentBookmarks && (
        
           <Container >
         
                 <Card>
                   <CardHeader>
                   <Center>
-                  <Image src={movieData.Poster} objectFit='fill' justifyContent="center"/>
+                  <Image src={movieData.Poster} objectFit='fill' justifyContent="center" alt="poster"/>
                   </Center>
                   <Center>
                   <Heading>{movieData.Title}</Heading>
@@ -60,7 +60,7 @@ export default function MoviesIndexItem({movieData}){
                   </Center>
                   <Center>
                     <Flex justifyContent="space-between">
-                    {movieData.Genre.split(",").map(genre => <Tag color>{genre.replace(",","")}</Tag>)}
+                    {movieData.Genre.split(",").map((genre,i) => <Tag key={i} color>{genre.replace(",","")}</Tag>)}
                     </Flex>
                 
                   </Center>
@@ -95,10 +95,10 @@ export default function MoviesIndexItem({movieData}){
             <Text>{movieData.Plot}</Text>
       </TabPanel>
       <TabPanel>
-          {detailKeys.map(key => (<>
-        <Flex justifyContent="space-between">
+          {detailKeys.map((key,i) => (<>
+        <Flex justifyContent="space-between"  key={i}>
    
-            <Text as="u">{key}: </Text>
+            <Text as="u" key={i}>{key}: </Text>
             <Text>{movieData[key]}</Text>
           </Flex></>))}
       </TabPanel>
