@@ -36,9 +36,10 @@ export default function MoviesIndexItem({movieData}){
       //detect removal of bookmark from bookmark index and readd green button
       if(currentButton === null){
         let current = loadBookmarks()
-        if(current.filter(movie => movie.imdbID === movieData.imdbID).length === 0){
-          setCurrentButton(bookmarkButton(movieData, "green", "Add to Bookmarks"))
-        }
+        console.log(current)
+        // if(current.filter(movie => movie.imdbID === movieData.imdbID).length === 0){
+        //   setCurrentButton(bookmarkButton(movieData, "green", "Add to Bookmarks"))
+        // }
       }
 
 
