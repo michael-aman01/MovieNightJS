@@ -29,7 +29,7 @@ useEffect(() => {
 
 
 
-if(currentBookmarks){
+
 return (
   <>
 
@@ -54,7 +54,7 @@ return (
 
             <>
 
-              { currentBookmarks.length > 0 ?  currentBookmarks.map((bookmark,i)=> <BookmarksIndexItem key={i} movieData={bookmark}></BookmarksIndexItem>) : <p>No bookmarks saved yet!</p>}
+              {currentBookmarks && currentBookmarks.length > 0 ?  currentBookmarks.map((bookmark,i)=> <BookmarksIndexItem key={i} movieData={bookmark}></BookmarksIndexItem>) : <p>No bookmarks saved yet!</p>}
 
             </>
 
@@ -65,5 +65,4 @@ return (
     </Drawer>
   </>
 )
-}
 }

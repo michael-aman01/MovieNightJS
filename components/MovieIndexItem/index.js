@@ -18,15 +18,6 @@ export default function MoviesIndexItem({movieData}){
 
 
     useEffect(() => {
-      //handle updates and changes to state's bookmarks
-      if(bookmarks.current.length === 0 || bookmarks.current.length != currentBookmarks.length){
-        let newData = loadBookmarks()
-        setCurrentBookmarks(newData)
-
-      }
-    },[bookmarks, currentBookmarks])
-
-    useEffect(() => {
       //initial load handle button (null if movie already bookmarked else add button)
       let bm = JSON.parse(localStorage.getItem("movie-bookmarks"))
       if(bm){
@@ -35,6 +26,8 @@ export default function MoviesIndexItem({movieData}){
         }else{
           setCurrentButton(<Button colorScheme="green"  leftIcon={<AddIcon />} id={movieData.imdbID} onClick={handleBookmark}>Add to Bookmarks</Button>)
         }
+      }else{
+        setCurrentButton(<Button colorScheme="green"  leftIcon={<AddIcon />} id={movieData.imdbID} onClick={handleBookmark}>Add to Bookmarks</Button>)
       }
     },[])
 
