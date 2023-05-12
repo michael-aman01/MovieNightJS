@@ -12,6 +12,7 @@ exports.modules = {
 Object.defineProperty(exports, "__esModule", ({
     value: true
 }));
+0 && (0);
 function _export(target, all) {
     for(var name in all)Object.defineProperty(target, name, {
         enumerable: true,
@@ -759,6 +760,7 @@ Document[_constants.NEXT_BUILTIN_DOCUMENT] = InternalFunctionDocument; //# sourc
 Object.defineProperty(exports, "__esModule", ({
     value: true
 }));
+0 && (0);
 function _export(target, all) {
     for(var name in all)Object.defineProperty(target, name, {
         enumerable: true,

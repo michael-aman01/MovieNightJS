@@ -27,7 +27,8 @@ const statusCodes = {
     405: "Method Not Allowed",
     500: "Internal Server Error"
 };
-function _getInitialProps({ res , err  }) {
+function _getInitialProps(param) {
+    let { res , err  } = param;
     const statusCode = res && res.statusCode ? res.statusCode : err ? err.statusCode : 404;
     return {
         statusCode
@@ -70,7 +71,7 @@ class Error extends _react.default.Component {
         const title = this.props.title || statusCodes[statusCode] || "An unexpected error has occurred";
         return /*#__PURE__*/ _react.default.createElement("div", {
             style: styles.error
-        }, /*#__PURE__*/ _react.default.createElement(_head.default, null, /*#__PURE__*/ _react.default.createElement("title", null, statusCode ? `${statusCode}: ${title}` : "Application error: a client-side exception has occurred")), /*#__PURE__*/ _react.default.createElement("div", null, /*#__PURE__*/ _react.default.createElement("style", {
+        }, /*#__PURE__*/ _react.default.createElement(_head.default, null, /*#__PURE__*/ _react.default.createElement("title", null, statusCode ? statusCode + ": " + title : "Application error: a client-side exception has occurred")), /*#__PURE__*/ _react.default.createElement("div", null, /*#__PURE__*/ _react.default.createElement("style", {
             dangerouslySetInnerHTML: {
                 /* CSS minified from
                 body { margin: 0; color: #000; background: #fff; }
@@ -88,7 +89,7 @@ class Error extends _react.default.Component {
                 }`
                     : ''
                 }
-               */ __html: `body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}${withDarkMode ? "@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}" : ""}`
+               */ __html: "body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}" + (withDarkMode ? "@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}" : "")
             }
         }), statusCode ? /*#__PURE__*/ _react.default.createElement("h1", {
             className: "next-error-h1",
@@ -128,6 +129,7 @@ if ((typeof exports.default === "function" || typeof exports.default === "object
 Object.defineProperty(exports, "__esModule", ({
     value: true
 }));
+0 && (0);
 function _export(target, all) {
     for(var name in all)Object.defineProperty(target, name, {
         enumerable: true,
@@ -142,7 +144,6 @@ _export(exports, {
         return _default;
     }
 });
-const _extends = __webpack_require__(741);
 const _interop_require_default = __webpack_require__(167);
 const _interop_require_wildcard = __webpack_require__(760);
 const _react = /*#__PURE__*/ _interop_require_wildcard._(__webpack_require__(689));
@@ -151,7 +152,8 @@ const _ampcontext = __webpack_require__(918);
 const _headmanagercontext = __webpack_require__(796);
 const _ampmode = __webpack_require__(732);
 const _warnonce = __webpack_require__(618);
-function defaultHead(inAmpMode = false) {
+function defaultHead(inAmpMode) {
+    if (inAmpMode === void 0) inAmpMode = false;
     const head = [
         /*#__PURE__*/ _react.default.createElement("meta", {
             charSet: "utf-8"
@@ -257,7 +259,9 @@ const METATYPES = [
                 "https://fonts.googleapis.com/css",
                 "https://use.typekit.net/"
             ].some((url)=>c.props["href"].startsWith(url))) {
-                const newProps = _extends._({}, c.props || {});
+                const newProps = {
+                    ...c.props || {}
+                };
                 newProps["data-href"] = newProps["href"];
                 newProps["href"] = undefined;
                 // Add this attribute to make it easy to identify optimized tags
@@ -274,7 +278,8 @@ const METATYPES = [
 /**
  * This component injects elements to `<head>` of your page.
  * To avoid duplicated `tags` in `<head>` you can use the `key` property, which will make sure every tag is only rendered once.
- */ function Head({ children  }) {
+ */ function Head(param) {
+    let { children  } = param;
     const ampState = (0, _react.useContext)(_ampcontext.AmpStateContext);
     const headManager = (0, _react.useContext)(_headmanagercontext.HeadManagerContext);
     return /*#__PURE__*/ _react.default.createElement(_sideeffect.default, {
@@ -334,28 +339,6 @@ module.exports = require("next/dist/shared/lib/utils/warn-once.js");
 /***/ ((module) => {
 
 module.exports = require("react");
-
-/***/ }),
-
-/***/ 741:
-/***/ ((__unused_webpack_module, exports) => {
-
-
-
-exports._ = exports._extends = _extends;
-function _extends() {
-    exports._ = exports._extends = _extends = Object.assign || function assign(target) {
-        for (var i = 1; i < arguments.length; i++) {
-            var source = arguments[i];
-            for (var key in source) if (Object.prototype.hasOwnProperty.call(source, key)) target[key] = source[key];
-        }
-
-        return target;
-    };
-
-    return _extends.apply(this, arguments);
-}
-
 
 /***/ }),
 
