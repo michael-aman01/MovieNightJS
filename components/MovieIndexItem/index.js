@@ -32,19 +32,19 @@ export default function MoviesIndexItem({movieData}){
       
     },[])
 
-    useEffect(() => {
-      //detect removal of bookmark from bookmark index and readd green button
-      if(currentButton === null){
-        let current = loadBookmarks()
-        console.log(current)
-        if(current !== null){
-          current.filter(movie => movie.imdbID === movieData.imdbID).length === 0 ? setCurrentButton(bookmarkButton(movieData, "green", "Add to Bookmarks")) : setCurrentButton(null)
-        }
-      }
+    // useEffect(() => {
+    //   //detect removal of bookmark from bookmark index and readd green button
+    //   if(currentButton === null){
+    //     let current = loadBookmarks()
+    //     console.log(current)
+    //     if(current !== null){
+    //       current.filter(movie => movie.imdbID === movieData.imdbID).length === 0 ? setCurrentButton(bookmarkButton(movieData, "green", "Add to Bookmarks")) : setCurrentButton(null)
+    //     }
+    //   }
 
 
       
-    }, [bookmarks])
+    // }, [bookmarks])
 
 
 
