@@ -35,13 +35,16 @@ export default function MoviesIndexItem({movieData}){
 
     const handleBookmark = async (e) => {
       let current = await loadBookmarks()
-      if(current.filter(movie => movie.imdbID === movieData.imdbID).length === 0){
-        dispatch(addBookmarkToStorage(movieData))
-
-        setCurrentBookmarks(current)
-        setCurrentButton(null)
-      
+      if(current){
+        if(current.filter(movie => movie.imdbID === movieData.imdbID).length === 0){
+          dispatch(addBookmarkToStorage(movieData))
+  
+          setCurrentBookmarks(current)
+          setCurrentButton(null)
+        
+        }
       }
+   
       return current
     }
 
