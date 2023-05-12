@@ -125,9 +125,5 @@ export default function MoviesIndexItem({movieData}){
           </Container>
         </>
     )
-    }else{
-      return (
-        <Spinner size='xl' />
-      )
     }
 }
