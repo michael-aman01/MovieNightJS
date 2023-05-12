@@ -19,6 +19,8 @@ export default function MoviesIndexItem({movieData}){
         setCurrentBookmarks(b)
       }
     },[])
+
+
     useState(() => {
       if(bookmarks.current.length === 0 || bookmarks.current.length != currentBookmarks.length){
         let newData = loadBookmarks()
@@ -114,9 +116,10 @@ export default function MoviesIndexItem({movieData}){
   <Center>
 
 
-            {currentBookmarks !== null && currentBookmarks.filter(movie => movie.imdbID === movieData.imdbID).length === 0 ?   
-            <Button colorScheme="green"  leftIcon={<AddIcon />} id={movieData.imdbID} onClick={(e) => handleAddBookmark(e, movieData)}>Add to Bookmarks</Button> : 
-            null }
+            {currentBookmarks &&  (
+                currentBookmarks.filter(movie => movie.imdbID === movieData.imdbID).length === 0 ?  <Button colorScheme="green"  leftIcon={<AddIcon />} id={movieData.imdbID} onClick={(e) => handleAddBookmark(e, movieData)}>Add to Bookmarks</Button> : null
+                     
+            )}
 
          </Center>
                   </CardBody>
