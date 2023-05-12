@@ -49,7 +49,7 @@ export default function MoviesIndexItem({movieData}){
         
     }
     
-    if(movieData && currentBookmarks){
+
     return (
         <>
 
@@ -114,7 +114,7 @@ export default function MoviesIndexItem({movieData}){
   <Center>
 
 
-            {currentBookmarks.filter(movie => movie.imdbID === movieData.imdbID).length === 0 ?   
+            {currentBookmarks !== null && currentBookmarks.filter(movie => movie.imdbID === movieData.imdbID).length === 0 ?   
             <Button colorScheme="green"  leftIcon={<AddIcon />} id={movieData.imdbID} onClick={(e) => handleAddBookmark(e, movieData)}>Add to Bookmarks</Button> : 
             null }
 
@@ -126,4 +126,3 @@ export default function MoviesIndexItem({movieData}){
         </>
     )
     }
-}
