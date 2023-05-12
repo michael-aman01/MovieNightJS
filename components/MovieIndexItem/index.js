@@ -86,7 +86,7 @@ export default function MoviesIndexItem({movieData}){
        
           <Container >
         
-                <Card>
+                <Card bg="purple.100">
                   <CardHeader>
                   <Center>
                   <Image src={movieData.Poster} objectFit='fill' justifyContent="center" alt="poster"/>
